@@ -1,12 +1,12 @@
 <template>
     <div>
-        <h1>这是注册组件</h1>
+        <h1>1234562345678</h1>
     </div>
 </template>
 
 <script>
     export default {
-        name: "register"
+        name: "ShopcarContainer"
     }
 </script>
 

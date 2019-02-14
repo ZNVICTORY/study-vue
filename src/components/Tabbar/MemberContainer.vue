@@ -1,12 +1,12 @@
 <template>
     <div>
-        <h1>这是goodslist组件</h1>
+        <h1>这是会员区</h1>
     </div>
 </template>
 
 <script>
     export default {
-        name: "goodslist"
+        name: "MemberContainer"
     }
 </script>
 
