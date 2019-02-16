@@ -2,9 +2,6 @@
     <div class="app-container">
         <!--顶部header区域-->
         <mt-header fixed title="黑马程序员--vue"></mt-header>
-
-
-
         <!--中间部分router-view-->
         <transition mode="out-in">
             <router-view></router-view>
@@ -57,5 +54,8 @@
     .v-enter-active,
     .v-leave-active{
         transition: all 0.4s ease ;
+    }
+    .mint-header{
+        z-index: 99;
     }
 </style>

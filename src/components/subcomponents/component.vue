@@ -1,40 +1,16 @@
 <template>
     <div class="cmt-container">
         <h3>发表评论</h3>
-        <textarea placeholder="请输入" maxlength="120"></textarea>
-        <mt-button type="primary" size="large">发表评论</mt-button>
+        <textarea placeholder="请输入" maxlength="120" v-model="msg"></textarea>
+        <mt-button type="primary" size="large" @click="postComment">发表评论</mt-button>
 
         <div class="cmt-list">
-            <div class="cmt-item">
+            <div class="cmt-item" v-model="commentlist" v-for="(item,i) in commentlist" :key="i">
                 <div class="cmt-title">
-                    第一楼&nbsp;&nbsp;用户:匿名用户&nbsp;&nbsp;发表时间:2012-12-12 12:12:21
+                    第一楼&nbsp;&nbsp;用户:{{ item.user_name}}&nbsp;&nbsp;发表时间:{{ item.add_time | dataformat}}
                 </div>
                 <div class="cmt-body">
-                    哈哈哈哈哈哈哈哈
-                </div>
-            </div>
-            <div class="cmt-item">
-                <div class="cmt-title">
-                    第一楼&nbsp;&nbsp;用户:匿名用户&nbsp;&nbsp;发表时间:2012-12-12 12:12:21
-                </div>
-                <div class="cmt-body">
-                    哈哈哈哈哈哈哈哈
-                </div>
-            </div>
-            <div class="cmt-item">
-                <div class="cmt-title">
-                    第一楼&nbsp;&nbsp;用户:匿名用户&nbsp;&nbsp;发表时间:2012-12-12 12:12:21
-                </div>
-                <div class="cmt-body">
-                    哈哈哈哈哈哈哈哈
-                </div>
-            </div>
-            <div class="cmt-item">
-                <div class="cmt-title">
-                    第一楼&nbsp;&nbsp;用户:匿名用户&nbsp;&nbsp;发表时间:2012-12-12 12:12:21
-                </div>
-                <div class="cmt-body">
-                    哈哈哈哈哈哈哈哈
+                    {{ item.content }}
                 </div>
             </div>
         </div>
@@ -50,7 +26,14 @@
         data(){
             return {
                 pageIndex:1,
-                commentlist:[]
+                commentlist:[
+                    {user_name: "匿名用户", add_time: Date.now(), content:"哈哈哈哈哈哈"},
+                    {user_name: "匿名用户", add_time: Date.now(), content:"哈哈哈哈哈哈"},
+                    {user_name: "匿名用户", add_time: Date.now(), content:"哈哈哈哈哈哈"},
+                    {user_name: "匿名用户", add_time: Date.now(), content:"哈哈哈哈哈哈"},
+                    {user_name: "匿名用户", add_time: Date.now(), content:"哈哈哈哈哈哈"}
+                ],
+                msg:""//评论输入的内容
             }
         },
          created(){
@@ -73,6 +56,20 @@
             getMore(){
                 this.pageIndex++;
                 this.getComments();
+            },
+            postComment(){
+                //trim()方法清除空格
+                //post 参数1.url:请求路径，参数2.提交的数据对象，参数3.提交的数据格式
+                if (this.msg.trim().length === 0){
+                    return Toast("评论为空")
+                }
+                this.$http.post('url',{content:this.msg.trim()}).then(result=>{
+                    if (result.body.status === 0 ){
+                        var cmt = {user_name:"匿名用户",add_time:Date.now(),content:this.msg.trim()};
+                        this.commentlist.unshift(cmt);
+                        this.msg = "";
+                    }
+                });
             }
         },
          props:["id"]
