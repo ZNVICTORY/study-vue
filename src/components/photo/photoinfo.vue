@@ -33,7 +33,7 @@
 
 <script>
     //导入子组件
-    import comment from '../subcomponents/component.vue'
+    import comment from '../subcomponents/comment.vue'
     export default {
         name: "photoinfo",
         data(){

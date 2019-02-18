@@ -63,7 +63,7 @@
             }
         },
         created(){
-          this.getNewList();
+          // this.getNewList();
         },
         methods:{
             //获取列表

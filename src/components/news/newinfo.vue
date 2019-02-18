@@ -9,13 +9,13 @@
         <hr>
         <div class="content"></div>
 
-        <comment-box v-bind:id="this.id"></comment-box>
+        <comment-box :id="this.id"></comment-box>
     </div>
 </template>
 
 <script>
     //导入评论子组件
- import component from '../subcomponents/component.vue'
+ import comment from '../subcomponents/comment.vue'
     export default {
         name: "newinfo",
         data(){
@@ -26,7 +26,7 @@
         methods:{},
         components:{
             //用来注册子组件
-            'comment-box':component
+            'comment-box':comment
         }
     }
 </script>

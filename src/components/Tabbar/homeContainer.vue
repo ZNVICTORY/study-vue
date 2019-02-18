@@ -1,15 +1,8 @@
 <template>
     <div>
-        <mt-swipe :auto="4000">
-            <mt-swipe-item>1</mt-swipe-item>
-            <mt-swipe-item>2</mt-swipe-item>
-            <mt-swipe-item>3</mt-swipe-item>
-            <!--<mt-swipe-item v-for="item in lunbotuList" v-bind:key="item.url">-->
-                <!--<img v-bind:src="item.img" alt="">-->
-            <!--</mt-swipe-item>-->
-        </mt-swipe>
-
-
+        <!--轮播图区域-->
+        <swiper :lunbotuList="lunbotuList" :isfull="true"></swiper>
+        <!--内容区域-->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
                 <router-link to="/home/newlist">
@@ -20,9 +13,10 @@
                 <span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>
                 <div class="mui-media-body">图片分享</div>
                 </router-link></li>
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="/home/goodslist">
                 <span class="mui-icon mui-icon-chatbubble"></span>
-                <div class="mui-media-body">商品购买</div></a></li>
+                <div class="mui-media-body">商品购买</div></router-link></li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                 <span class="mui-icon mui-icon-location"></span>
                 <div class="mui-media-body">留言反馈</div></a></li>
@@ -39,16 +33,21 @@
 
 <script>
     import { Toast } from 'mint-ui';
+    import swiper from '../subcomponents/swipe.vue'
     export default {
         name: "homeContainer",
         data(){
             return {
-               lunbotuList:[]//保存轮播图的数组
+               lunbotuList:[
+                   {url:"https://i1.mifile.cn/f/i/2018/mi8/summary/index1.jpg"},
+                   {url:"https://i1.mifile.cn/f/i/2018/mi8/summary/index2.jpg"},
+                   {url:"https://i1.mifile.cn/f/i/2018/mi8/summary/index3.jpg"}
+               ]//保存轮播图的数组
             }
         },
-        created(){
-            this.getLunbotu();
-        },
+        // created(){
+        //     this.getLunbotu();
+        // },
         methods:{
             //获去轮播图数据的方法
             getLunbotu(){
@@ -64,29 +63,15 @@
                 })
 
             }
+        },
+        components:{
+            swiper
         }
     }
 </script>
 
 <style scoped lang="scss">
-    .mint-swipe{
-        height: 180px;
-    }
-    .mint-swipe-item{
-        &:nth-child(1){
-            background: red;
-         }
-        &:nth-child(2){
-            background: blue;
-        }
-        &:nth-child(3){
-            background: pink;
-        }
-        img{
-            width: 100%;
-            height: 100%;
-        }
-    }
+
     .mui-grid-view.mui-grid-9{
         border: 0;
         background: #ffffff;
