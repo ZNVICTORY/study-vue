@@ -24,15 +24,6 @@
     }
     .mint-swipe-item{
         text-align: center;
-        &:nth-child(1){
-
-        }
-        &:nth-child(2){
-
-        }
-        &:nth-child(3){
-
-        }
         img{
             /*width: 100%;*/
             height: 100%;
