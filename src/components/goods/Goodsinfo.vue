@@ -22,10 +22,14 @@
                        市场价:<del>￥2399</del>
                        销售价:<span class="now_price">￥2199</span>
                    </p>
-                    <p>购买数量:<numbox></numbox></p>
+                    <!--上限值，即最大值应该是库存量，父组件向子组件传值，即属性绑定-->
+                    <p>购买数量:<numbox @getCount="getSelectCount" :max="60"></numbox></p>
                     <mt-button type="primary" size="small">立即购买</mt-button>
                     <mt-button type="danger" size="small" @click="addToShopCar">加入购物车</mt-button>
                 </div>
+                <!--涉及到子组件向父组件传值，即 numbox子组件向父组件goodsinfo传值 ，采用(事件调用机制)-->
+                <!--事件调用的本质 ：父组件 向 子组件 传递方法 ，子组件调用这个方法，同时把 数据当做参数
+                传递给这个方法-->
             </div>
         </div>
         <!--商品参数区域-->
@@ -65,7 +69,8 @@
                     {url: "//i1.mifile.cn/f/i/g/2015/cn-index/mix2320-220.png"}
                 ],
                 goodinfo: {},
-                ballFlag: false//控制小球的隐藏和显示的
+                ballFlag: false,//控制小球的隐藏和显示的
+                SelectCounted:1//保存用户选择的商品数量，默认商品数量为1
             }
         },
         created() {
@@ -98,6 +103,16 @@
             },
             addToShopCar() {
                 this.ballFlag = !this.ballFlag;
+            //    添加到购物车
+                //{id:商品的id，count：商品购买的数量，price：商品的单价，selected：false}
+                //拼接出一个，要保存到car 数组中的商品信息对象
+                var goodsinfo ={
+                    id:this.id,
+                    count:this.SelectCounted,
+                    price:/**this.goodinfo.sell_price,**/2199,
+                    selected:true
+                };
+                this.$store.commit("addToCar",goodsinfo);
             },
             beforeEnter(el) {
                 el.style.transform = "translate(0,0)";
@@ -117,6 +132,12 @@
             },
             afterEnter(el) {
                 this.ballFlag = !this.ballFlag;
+            },
+            getSelectCount(count){
+                //当子组件调用这个方法时，将选中的数量传递给父组件，即将选中的值保存在data上
+                this.SelectCounted = count;
+                console.log("父组件拿到的数量值"+this.SelectCounted)
+
             }
         },
             components:{
