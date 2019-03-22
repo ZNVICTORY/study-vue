@@ -5,7 +5,7 @@
         <mt-button type="primary" size="large" @click="postComment">发表评论</mt-button>
 
         <div class="cmt-list">
-            <div class="cmt-item" v-model="commentlist" v-for="(item,i) in commentlist" :key="i">
+            <div class="cmt-item"  v-for="(item,i) in commentlist" :key="i">
                 <div class="cmt-title">
                     第一楼&nbsp;&nbsp;用户:{{ item.user_name}}&nbsp;&nbsp;发表时间:{{ item.add_time | dataformat}}
                 </div>

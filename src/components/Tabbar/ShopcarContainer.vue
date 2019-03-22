@@ -6,7 +6,8 @@
            <div class="mui-card-content">
                <div class="mui-card-content-inner">
                    <mt-switch v-model="$store.getters.getGoodsSelect[item.id]"
-                   @change="Selectedchange(item.id,$store.getters.getGoodsSelect[item.id])"></mt-switch>
+                   @change="Selectedchange(item.id,
+                   $store.getters.getGoodsSelect[item.id])"></mt-switch>
                    <img :src="item.img_url" alt="">
                    <div class="info">
                        <h1>{{item.title}}</h1>

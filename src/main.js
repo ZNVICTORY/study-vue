@@ -1,5 +1,4 @@
 //这是所有js 入口的文件
-console.log("ok");
 
 //导入Vue
 import Vue from 'vue'
@@ -12,9 +11,12 @@ import router from  './router.js'
 //导入vue-resource
 import VueResource from 'vue-resource'
 Vue.use(VueResource);
+import axios from 'axios';
+Vue.use(axios);
 //注册Vuex
 import Vuex from 'vuex'
 Vue.use(Vuex);
+
 //每次进入网站 ， 肯定会调用 main.js ,在刚调用的时候，先从本地存储中，把购物车的数据读出来，放到store中
 var car  = JSON.parse(localStorage.getItem("car") ||"[]");
 
@@ -133,13 +135,15 @@ import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
 
 //按需导入组件
-import { Header, Swipe, SwipeItem ,Button,Lazyload,Switch} from 'mint-ui';
+import { Header, Swipe, SwipeItem ,Button,Lazyload,Switch,Spinner} from 'mint-ui';
 Vue.component(Header.name,Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
 Vue.component(Button.name, Button);
 Vue.component(Switch.name, Switch);
+Vue.component(Spinner.name, Spinner)
 Vue.use(Lazyload);
+
 
 
 

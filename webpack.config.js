@@ -30,6 +30,20 @@ module.exports = {
         }),
         new VueLoaderPlugin(),
     ],
+    // dev:{
+    //     // env:require('./dev.env')
+    //     assetsSubDirectory:'static',
+    //     assetsPublicPath:'/',
+    //     proxyTable:{
+    //         '/api':{
+    //             target:'http',//域名
+    //             changeOrigin:true,
+    //             pathRewrite:{
+    //                 '^api':''
+    //             }
+    //         }
+    //     }
+    // }
     // resolve: {
     //     alias: {//设置vue被导入包的路径
     //         // "vue$":"vue/dist/vue.js"

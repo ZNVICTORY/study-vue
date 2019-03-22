@@ -7,7 +7,8 @@
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
                 <router-link to="/home/newlist">
                 <span class="mui-icon mui-icon-home"></span>
-                <div class="mui-media-body">新闻资讯</div></router-link></li>
+                <div class="mui-media-body">新闻资讯</div>
+                </router-link></li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
                 <router-link to="/home/photolist">
                 <span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>
@@ -17,15 +18,17 @@
                 <router-link to="/home/goodslist">
                 <span class="mui-icon mui-icon-chatbubble"></span>
                 <div class="mui-media-body">商品购买</div></router-link></li>
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="/home/communicate">
                 <span class="mui-icon mui-icon-location"></span>
-                <div class="mui-media-body">留言反馈</div></a></li>
+                <div class="mui-media-body">留言反馈</div></router-link></li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
                 <span class="mui-icon mui-icon-search"></span>
                 <div class="mui-media-body">视频专区</div></a></li>
-            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                <router-link to="/home/qiangda">
                 <span class="mui-icon mui-icon-phone"></span>
-                <div class="mui-media-body">联系我们</div></a></li>
+                <div class="mui-media-body">联系我们</div></router-link></li>
         </ul>
         <!--<h1>这是首页</h1>-->
     </div>
@@ -45,13 +48,13 @@
                ]//保存轮播图的数组
             }
         },
-        // created(){
-        //     this.getLunbotu();
-        // },
+        created(){
+            this.getLunbotu();
+        },
         methods:{
             //获去轮播图数据的方法
             getLunbotu(){
-                this.$http.get("请求地址").then(result =>{
+                this.$http.get("192.168.1.150:3001/lunbotu").then(result =>{
                     // console.log(result.body)
                     if(result.body.status === 0 ){
                         //成功

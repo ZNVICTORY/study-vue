@@ -1,7 +1,7 @@
 <template>
     <div class="app-container">
         <!--顶部header区域-->
-        <mt-header fixed title="黑马程序员--vue">
+        <mt-header fixed title="BFP商城">
             <span  slot="left" @click="goBack" v-show="flag">
                 <mt-button icon="back">返回</mt-button>
             </span>
@@ -20,18 +20,18 @@
                 <span class="mui-icon mui-icon-home"></span>
                 <span class="mui-tab-label">首页</span>
             </router-link>
-            <router-link class="mui-tab-item-lib" to="/member">
-                <span class="mui-icon mui-icon-contact"></span>
-                <span class="mui-tab-label">会员</span>
+           <router-link class="mui-tab-item-lib" to="/search">
+                <span class="mui-icon mui-icon-extra mui-icon-extra-topic"></span>
+                <span class="mui-tab-label">分类</span>
             </router-link>
             <router-link class="mui-tab-item-lib" to="/shopcar">
                 <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
                     <span class="mui-badge" id="badge">{{ $store.getters.getAllCount}}</span></span>
                 <span class="mui-tab-label">购物车</span>
             </router-link>
-            <router-link class="mui-tab-item-lib" to="/search">
-                <span class="mui-icon mui-icon-search"></span>
-                <span class="mui-tab-label">搜索</span>
+                <router-link class="mui-tab-item-lib" to="/member">
+                <span class="mui-icon mui-icon-contact"></span>
+                <span class="mui-tab-label">我的</span>
             </router-link>
         </nav>
     </div>
@@ -50,8 +50,11 @@
 
         methods:{
             goBack(){
-            //    点击后退
+               点击后退
                 this.$router.go(-1);
+                //  if(confirm("你确定吗")){
+                // this.$router.go(-1);  
+                //       }
             }
         },
         watch:{
@@ -70,7 +73,7 @@
 
 <style scoped>
     .app-container{
-        padding-top: 40px;
+        /* padding-top: 40px; */
         padding-bottom: 50px;
         overflow-x: hidden;
     }
