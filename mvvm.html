@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+<meta charset="UTF-8">
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios"> -->
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<link rel="stylesheet" href="">
+</head>
+
+<body>
+<!-- 原生js实现双向数据绑定 -->
+<label for="in">输入</label>
+<input type="text" name="in" id="userName">
+<label for="out-show">展示</label>
+<input type="text" name="out-show" id="userNameTo">
+<script type="text/javascript">
+// 获取需要监听的对象的输入框
+   var inputObj = document.getElementById("userName");
+//    获取展示监听对象的输入框
+   var showObj  = document.getElementById("userNameTo");
+//    当失去焦点时进行值得获取
+   inputObj.addEventListener('keyup',modelToView);
+//    定义一个没有原型链的空对象
+   var model = new Object(null);
+//    核心数据绑定函数,给model对象添加一个user的属性
+   Object.defineProperty(model,'user',{
+       set:function(value){
+           user = value;
+           showObj.value = value;//赋值给展示输入框
+       },
+       get:function(){
+           return user;
+       }
+   });
+//    数据变化
+function modelToView(){
+    model.user = inputObj.value;
+}
+</script>
+</body>
+
+</html>

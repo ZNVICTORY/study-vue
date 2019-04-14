@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<link rel="stylesheet" href="">
+</head>
+
+<body>
+<label for="name">请输入信息</label><br>
+<input type="text" name="name" id="inputObj" placeholder="请输入信息">
+<p>展示信息</p>
+<p id="showName"></p>
+
+<script >
+// 获取输入框的信息数据
+   var inputObj = document.getElementById("inputObj");
+//    获取展示信息的id
+   var showObj = document.getElementById('showName');
+//    创建一个空对象
+   var obj = {};
+//    给创建的空对象添加一个属性data
+Object.defineProperty(obj,'data',{
+    set:function(newVal){
+        data = newVal;
+        showObj.innerHTML = newVal;//赋值给展示对象
+    },
+    get:function(){
+        return data;
+    }
+});
+//监听输入框的数据是否发生改变
+    inputObj.addEventListener('keyup',function(){
+        // console.log(inputObj.value)
+        obj.data = inputObj.value;
+        // obj.data = e.target.value;
+    });
+</script>
+</body>
+
+</html>
