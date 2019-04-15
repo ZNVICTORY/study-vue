@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimal-ui:ios">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<link rel="stylesheet" href="">
+</head>
+
+<body>
+
+<script >
+var sum = new Array;
+for(let i = 1;i<51;i++)
+{
+    sum.unshift(i);
+}
+for(var i = 0;i<50;i++)
+{
+    var j = sum[i];
+    for(var k = 0;k<sum.length;k++)
+    {
+       if(sum[k] % j == 0) sum[k] = sum[k]*(-1);
+    }
+}
+for(var i = 0;i<sum.length;i++)
+{
+    console.log(sum[i]);
+}
+</script>
+</body>
+
+</html>
